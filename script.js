@@ -26,3 +26,7 @@ const boxes = (function () {
   return {changeBoxValue, getValue}
 })();
 
+const gameController = (function() {
+
+})();
+
