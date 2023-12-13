@@ -18,9 +18,11 @@ return {makeBoard};
 const boxes = (function () {
   value = ''
 
-  const fillBox = function(box, player) {
-
+  const changeBoxValue = function(player) {
+    value = player
   }
-  return {value}
+
+  const getValue = () => value;
+  return {changeBoxValue, getValue}
 })();
 
