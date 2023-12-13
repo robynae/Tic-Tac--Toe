@@ -7,7 +7,7 @@ const gameBoard = (function () {
         for (let i = 0; i < rows; i++) {
         board[i] = [];
         for (let j = 0; j < columns; j++) {
-            board[i].push(boxes())
+            board[i].push(boxes)
         }
     }
     console.log(board);
@@ -27,6 +27,25 @@ const boxes = (function () {
 })();
 
 const gameController = (function() {
+  const players = [
+    {
+    name: 'Player One',
+    marker: 'X'
+    },
+    {
+      name: 'Player Two',
+      marker: 'O'
+    }
+];
 
+const currentPlayer = players[0];
+
+const switchActivePlayer = function() {
+  if(currentPlayer === players[0]) {
+    currentPlayer = player[1];
+  } else {
+    currentPlayer = players[0];
+  }
+}
 })();
 
