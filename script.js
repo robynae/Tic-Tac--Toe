@@ -1,4 +1,4 @@
-const createBoard = (function () {
+const gameBoard = (function () {
     let rows = 3;
     let columns = 3;
     let board = [];
@@ -7,7 +7,7 @@ const createBoard = (function () {
         for (let i = 0; i < rows; i++) {
         board[i] = [];
         for (let j = 0; j < columns; j++) {
-            board[i].push(boxes.value)
+            board[i].push(boxes())
         }
     }
     console.log(board);
