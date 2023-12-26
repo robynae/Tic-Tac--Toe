@@ -1,3 +1,14 @@
+const gameCells = (function() {
+  let value = '';
+
+  const changeMarker = function(player) {
+    value = player;
+  }
+
+  const getValue = () => value;
+  return {changeMarker, getValue};
+})();
+
 const gameBoard = (function () {
     let rows = 3;
     let columns = 3;
@@ -6,12 +17,12 @@ const gameBoard = (function () {
         for (let i = 0; i < rows; i++) {
         board[i] = [];
         for (let j = 0; j < columns; j++) {
-            board[i].push('')
+            board[i].push(gameCells.value)
         }
     }
 
 
-    const getBoard = () => board;
+    const getBoard = () => console.log(board);
 
 return {getBoard};
 })();
