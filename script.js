@@ -1,4 +1,35 @@
-const gameCells = (function() {
+const gameBoard = (function() {
+    let rows = 3;
+    let columns = 3;
+    let board = [];
+
+        for (let i = 0; i < rows; i++) {
+        board[i] = [];
+        for (let j = 0; j < columns; j++) {
+            board[i].push(gameCells());
+        }
+    }
+
+
+    const getBoard = () => board;
+
+    const changeCell = function(row, column, player) {
+      const cell = board[row][column]
+      if(cell.getValue === '') {
+        cell.changeMarker(player);
+      }
+    }
+
+
+    const printBoard = () => {
+      const boardWithValues = board.map((row) => row.map((cell) => cell.getValue()));
+      console.log(boardWithValues);
+    }
+
+return {getBoard, changeCell, printBoard};
+})();
+
+function gameCells() {
   let value = '';
 
   const changeMarker = function(player) {
@@ -7,26 +38,7 @@ const gameCells = (function() {
 
   const getValue = () => value;
   return {changeMarker, getValue};
-})();
-
-const gameBoard = (function () {
-    let rows = 3;
-    let columns = 3;
-    let board = [];
-
-        for (let i = 0; i < rows; i++) {
-        board[i] = [];
-        for (let j = 0; j < columns; j++) {
-            board[i].push(gameCells.value)
-        }
-    }
-
-
-    const getBoard = () => console.log(board);
-
-return {getBoard};
-})();
-
+};
 
 const gameController = (function() {
   const players = [
@@ -49,5 +61,9 @@ const switchActivePlayer = function() {
     currentPlayer = players[0];
   }
 }
+
+return {currentPlayer};
 })();
+
+
 
