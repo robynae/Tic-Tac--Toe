@@ -15,8 +15,11 @@ const gameBoard = (function() {
 
     const changeCell = function(row, column, player) {
       const cell = board[row][column]
-      if(cell.getValue === '') {
+      if(cell.getValue() === '') {
         cell.changeMarker(player);
+        return true;
+      } else if(cell.getValue() === 'X' || 'O') {
+        return false;
       }
     }
 
@@ -52,18 +55,39 @@ const gameController = (function() {
     }
 ];
 
-const currentPlayer = players[0];
+let currentPlayer = players[0];
 
-const switchActivePlayer = function() {
+const getCurrentPlayer = () => currentPlayer.marker;
+
+const switchCurrentPlayer = function() {
   if(currentPlayer === players[0]) {
-    currentPlayer = player[1];
+    currentPlayer = players[1];
   } else {
     currentPlayer = players[0];
   }
 }
 
-return {currentPlayer};
+const newRound = function() {
+  gameBoard.printBoard();
+  console.log(`${currentPlayer.name}'s turn.`);
+}
+
+const playRound = function(column, row) {
+  if(gameBoard.changeCell(column, row, getCurrentPlayer())) {
+      gameBoard.changeCell(column, row, getCurrentPlayer());
+      switchCurrentPlayer();
+      newRound();
+  } else {
+    console.log('Sorry, this cell is taken. Try again.')
+  }
+}
+
+newRound();
+
+return {getCurrentPlayer, switchCurrentPlayer, playRound};
 })();
+
+
 
 
 
