@@ -44,6 +44,7 @@ function gameCells() {
 };
 
 const gameController = (function() {
+  const board = gameBoard;
   const players = [
     {
     name: 'Player One',
@@ -68,13 +69,29 @@ const switchCurrentPlayer = function() {
 }
 
 const newRound = function() {
-  gameBoard.printBoard();
+  board.printBoard();
   console.log(`${currentPlayer.name}'s turn.`);
 }
 
+const checkHorizontalWin = function(arr) {
+  for(let i =0; i < arr.length; i++) {
+    const column = arr[i];
+    if(column.every((cell) => cell.getValue() === 'X' || cell.getValue() === 'O')) {
+      return true;
+    }
+  }
+  return false;
+  }
+
+const checkIfWon = function() {
+  if(checkHorizontalWin(board.getBoard()) === true) {
+    console.log(`${currentPlayer.name} wins!`)
+  }
+}
+
 const playRound = function(column, row) {
-  if(gameBoard.changeCell(column, row, getCurrentPlayer())) {
-      gameBoard.changeCell(column, row, getCurrentPlayer());
+  if(board.changeCell(column, row, getCurrentPlayer())) {
+      checkIfWon();
       switchCurrentPlayer();
       newRound();
   } else {
@@ -84,10 +101,9 @@ const playRound = function(column, row) {
 
 newRound();
 
+
+
 return {getCurrentPlayer, switchCurrentPlayer, playRound};
 })();
-
-
-
 
 
