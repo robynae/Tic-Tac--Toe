@@ -83,8 +83,22 @@ const checkHorizontalWin = function(arr) {
   return false;
   }
 
+const checkVerticalWin = function(arr) {
+  for(let i = 0; i < arr.length; i++) {
+    let column = [];
+    for(let j = 0; j < arr[i].length; j++) {
+      column.push(arr[j][i].getValue());
+    }
+      if(column.every((cell) => cell === 'X' || cell === 'O')) {
+        return true;
+    }
+  }
+  return false;
+}
+
+
 const checkIfWon = function() {
-  if(checkHorizontalWin(board.getBoard()) === true) {
+  if(checkHorizontalWin(board.getBoard()) === true || checkVerticalWin(board.getBoard()) === true) {
     console.log(`${currentPlayer.name} wins!`)
   }
 }
