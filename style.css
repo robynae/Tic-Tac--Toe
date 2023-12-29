@@ -24,11 +24,19 @@ h1 {
 }
 
 .board {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+
     grid-row: 2 / 5;
     justify-self: center;
 
     background-color: pink;
-    height: 80%;
+    height: 85%;
     width: 45%;
     margin-top: 50px;
+}
+
+.cell {
+    border: 1px solid black;
 }
