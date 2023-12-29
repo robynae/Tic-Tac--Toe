@@ -22,3 +22,13 @@ h1 {
     font-size: 5rem;
     font-family: sans-serif;
 }
+
+.board {
+    grid-row: 2 / 5;
+    justify-self: center;
+
+    background-color: pink;
+    height: 80%;
+    width: 45%;
+    margin-top: 50px;
+}
