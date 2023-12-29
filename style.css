@@ -1,0 +1,24 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: grid;
+    height: 100vh;
+
+    grid-template-rows: 1fr 5fr;
+}
+
+.header {
+    background-color: #1e40af;
+    width: 100%;
+    text-align: center;
+    grid-row: 1;
+}
+
+h1 {
+    color: white;
+    font-size: 5rem;
+    font-family: sans-serif;
+}
